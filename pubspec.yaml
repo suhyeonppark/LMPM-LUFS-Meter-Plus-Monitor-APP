@@ -1,0 +1,30 @@
+name: lufs_monitor
+description: "LUFS Meter Plus 가 브로드캐스트하는 라우드니스 값을 받아 표시하는 모니터 앱."
+publish_to: "none"
+version: 1.0.1+2
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+# 앱 런처 아이콘 (블루 라우드니스 미터 바). 생성: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#F8FBFF"
+  adaptive_icon_foreground: "assets/icon/icon_fg.png"
+  min_sdk_android: 21

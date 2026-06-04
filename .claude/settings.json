@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($cmd = Get-Command flutter -ErrorAction SilentlyContinue; if \\($cmd\\) { \"PATH flutter: $\\($cmd.Source\\)\" } else { \"flutter NOT on PATH\" }; \"---\"; Test-Path \".\\\\lib\\\\flutter\\\\bin\\\\flutter.bat\")",
+      "PowerShell(& \".\\\\lib\\\\flutter\\\\bin\\\\flutter.bat\" doctor)",
+      "PowerShell(& \".\\\\lib\\\\flutter\\\\bin\\\\flutter.bat\" create --org com.lufs --platforms=android .)",
+      "PowerShell(& \".\\\\lib\\\\flutter\\\\bin\\\\flutter.bat\" devices)",
+      "PowerShell(& \".\\\\lib\\\\flutter\\\\bin\\\\flutter.bat\" build apk --release)",
+      "PowerShell(\"---\")",
+      "PowerShell(if \\(-not \\(Test-Path \"C:\\\\src\"\\)\\) { New-Item -ItemType Directory \"C:\\\\src\" | Out-Null }; \"src ready\"; if \\(Test-Path \"C:\\\\src\\\\flutter\"\\) { \"C:\\\\src\\\\flutter already exists\" } else { \"target clear\" })",
+      "PowerShell(& \"C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat\" pub get)",
+      "PowerShell(& \"C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat\" build apk --release)",
+      "Bash(ls \"C:\\\\Users\\\\parks\\\\OneDrive\\\\개인개발\\\\Stream Watcher\")",
+      "Read(//c/Users/parks/OneDrive/개인개발/Stream Watcher/**)",
+      "Bash(powershell -ExecutionPolicy Bypass -File make_icon.ps1)",
+      "Bash(set FLUTTER_GIT_URL=https://github.com/flutter/flutter.git)",
+      "Bash(C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat --version)",
+      "PowerShell(& C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat devices)",
+      "PowerShell(& C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat pub get)",
+      "PowerShell(& C:\\\\src\\\\flutter\\\\bin\\\\dart.bat run flutter_launcher_icons)",
+      "Read(//c/Users/parks/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_launcher_icons-0.13.1/lib/**)",
+      "PowerShell(Write-Output \"CWD: $\\(Get-Location\\)\"; Test-Path .\\\\flutter_launcher_icons.yaml; Test-Path .\\\\pubspec.yaml; $b=[System.IO.File]::ReadAllBytes\\(\"flutter_launcher_icons.yaml\"\\); Write-Output \\(\"First bytes: \" + \\($b[0..3] -join ','\\)\\))",
+      "Read(//c/lufs_build/app/outputs/flutter-apk/**)",
+      "PowerShell(& C:\\\\Users\\\\parks\\\\AppData\\\\Local\\\\Android\\\\sdk\\\\platform-tools\\\\adb.exe -s RFKYA002V1B install -r \"C:\\\\lufs_build\\\\app\\\\outputs\\\\flutter-apk\\\\app-debug.apk\")",
+      "PowerShell(C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat clean)",
+      "PowerShell(C:\\\\src\\\\flutter\\\\bin\\\\flutter.bat pub get)",
+      "PowerShell(flutter build appbundle --release 2>&1)",
+      "PowerShell(flutter clean 2>&1)",
+      "PowerShell(flutter pub get 2>&1)",
+      "PowerShell(cmd /c \"mklink /J C:\\\\lufs_build \"\"C:\\\\Users\\\\USER\\\\OneDrive\\\\���ΰ���\\\\Program\\\\lufs_monitor\"\"\")",
+      "Read(//c/lufs_build/**)",
+      "PowerShell(cmd /c \"rmdir C:\\\\lufs_build\")",
+      "PowerShell(cmd /c \"mklink /J C:\\\\lm \"\"C:\\\\Users\\\\USER\\\\OneDrive\\\\���ΰ���\\\\Program\\\\lufs_monitor\"\"\")",
+      "PowerShell(cmd /c \"rmdir C:\\\\lm\")",
+      "PowerShell(subst Z: \"C:\\\\Users\\\\USER\\\\OneDrive\\\\���ΰ���\\\\Program\\\\lufs_monitor\")",
+      "Read(//c/Users/USER/OneDrive/���ΰ���/Program/lufs_monitor/**)",
+      "Read(//z//**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\USER\\OneDrive\\개인개발\\Program\\lufs_monitor\\.dart_tool"
+    ]
+  }
+}
