@@ -5,13 +5,14 @@ allprojects {
     }
 }
 
-// 빌드 출력을 OneDrive 밖 + ASCII 경로로 둔다. OneDrive 파일 잠금과
-// 한글 경로에서의 AAPT2 데몬 실패를 동시에 피하기 위함.
-val sharedBuildRoot = rootProject.file("C:/lufs_build")
-rootProject.layout.buildDirectory.set(sharedBuildRoot)
+// 빌드 출력을 프로젝트 루트의 build/ 로 둔다 (Flutter 표준).
+// ASCII·비-OneDrive 경로(C:\dev\lmpm)에서 작업하므로 별도 리다이렉트 불필요.
+val newBuildDir = rootProject.layout.buildDirectory.dir("../../build").get()
+rootProject.layout.buildDirectory.value(newBuildDir)
 
 subprojects {
-    project.layout.buildDirectory.set(java.io.File(sharedBuildRoot, project.name))
+    val newSubprojectBuildDir = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
 subprojects {
     project.evaluationDependsOn(":app")
