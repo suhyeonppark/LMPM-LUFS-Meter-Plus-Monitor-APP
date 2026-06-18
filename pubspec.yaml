@@ -1,7 +1,7 @@
 name: lufs_monitor
 description: "LUFS Meter Plus 가 브로드캐스트하는 라우드니스 값을 받아 표시하는 모니터 앱."
 publish_to: "none"
-version: 1.1.0+3
+version: 1.1.0+5
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

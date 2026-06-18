@@ -274,6 +274,10 @@ private final class LufsPipRenderer: NSObject,
     context.setFillColor(UIColor(red: 0.067, green: 0.075, blue: 0.086, alpha: 1).cgColor)
     context.fill(CGRect(origin: .zero, size: renderSize))
 
+    // Core Graphics 좌표계(원점=좌하단)를 UIKit 좌표계(원점=좌상단)로 뒤집기
+    context.translateBy(x: 0, y: renderSize.height)
+    context.scaleBy(x: 1, y: -1)
+
     UIGraphicsPushContext(context)
     drawText()
     UIGraphicsPopContext()
@@ -385,6 +389,10 @@ private final class LufsPipRenderer: NSObject,
   ) {
     NSLog("LUFS PiP did start")
     channel.invokeMethod("pipModeChanged", arguments: true)
+    // PiP 시작 후 앱을 백그라운드로 전환
+    DispatchQueue.main.async {
+      UIApplication.shared.perform(NSSelectorFromString("suspend"))
+    }
   }
 
   func pictureInPictureControllerDidStopPictureInPicture(
